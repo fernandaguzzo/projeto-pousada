@@ -71,11 +71,10 @@ def reservas():
 
 @app.route('/chat')
 def chat():
-     # Verifica se o usuário está na sessão, caso contrário, redireciona para login
+    # Verifica se o usuário está na sessão, caso contrário, redireciona para login
     if 'user' not in session:
         return redirect(url_for('login'))
     return render_template('chat.html')
-
 
 # Rota para listar todas as reservas
 @app.route('/listar_reservas', methods=['GET'])
@@ -97,3 +96,4 @@ def logout():
 
 if __name__ == '__main__':
     app.run(debug=True, port=8080)
+
