@@ -1,5 +1,6 @@
 @echo off
 cd /d %~dp0
-echo Instalando dependências...
-pip install flask tinydb flask-cors
+echo Instalando...
+pip install flask tinydb
+code ./
 pause
