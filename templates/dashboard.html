@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard de Pousadas e Reservas</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Dashboard de Pousadas e Reservas</h1>
+    </header>
+    <main class="dashboard">
+        <div class="card">
+            <h2>Total de Pousadas</h2>
+            <p>{{ total_pousadas }}</p>
+        </div>
+        <div class="card">
+            <h2>Total de Reservas</h2>
+            <p>{{ total_reservas }}</p>
+        </div>
+        <div class="card">
+            <h2>Total de Hóspedes</h2>
+            <p>{{ total_hospedes }}</p>
+        </div>
+        <div class="card">
+            <h2>Média de Hóspedes por Reserva</h2>
+            <p>{{ media_hospedes_por_reserva }}</p>
+        </div>
+        <div class="card">
+            <h2>Valor Total Arrecadado</h2>
+            <p>R$ {{ valor_total_arrecadado }}</p>
+        </div>
+        <div class="card">
+            <h2>Pousada Mais Popular</h2>
+            <p>{{ nome_pousada_mais_popular }}</p>
+        </div>
+    </main>
+</body>
+</html>
+
+
+
