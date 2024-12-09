@@ -3,67 +3,94 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Menu Principal - Gerenciamento de Pousadas e Clientes</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Menu Responsivo</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='header.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='card.css') }}">
 </head>
 <body>
     <header>
-        <h1>Menu Principal</h1>
-        <p>Bem-vindo ao sistema de gerenciamento. Escolha uma das opções abaixo:</p>
-        
-        <button onclick="confirmLogout()" class="logout-button">Deslogar</button>
-    </header>
-
-    <main class="menu-container">
-        <div class="menu-grid">
-            <section class="menu-option">
-                <h2>Gerenciar Clientes</h2>
-                <p>Para gerenciar o cadastro, listagem e edição de clientes, clique no botão abaixo.</p>
-                <a href="/clientes" class="menu-button">Ir para Clientes</a>
-            </section>
-    
-            <section class="menu-option">
-                <h2>Gerenciar Pousadas</h2>
-                <p>Para gerenciar o cadastro, listagem e edição de pousadas, clique no botão abaixo.</p>
-                <a href="/pousadas" class="menu-button">Ir para Pousadas</a>
-            </section>
-    
-            <section class="menu-option">
-                <h2>Reservas</h2>
-                <p>Para gerenciar as reservas, clique no botão abaixo.</p>
-                <a href="/reservas" class="menu-button">Ir para Reservas</a>
-            </section>
-    
-            <section class="menu-option">
-                <h2>Dashboard</h2>
-                <p>Para acessar o Dashboard, clique no botão abaixo.</p>
-                <a href="/dashboard" class="menu-button">Ir para Dashboard</a>
-            </section>
+        <nav class="nav-bar">
+            <div class="logo">
+                <h1>Pousada Ypuã</h1>
+            </div>
+            <div class="nav-list">
+                <ul>
+                    <li class="nav-item"><a href="/" class="nav-link">Início</a></li>
+                    <li class="nav-item"><a href="/clientes" class="nav-link">Clientes</a></li>
+                    <li class="nav-item"><a href="/pousadas" class="nav-link">Pousadas</a></li>
+                    <li class="nav-item"><a href="/reservas" class="nav-link">Reservas</a></li>
+                </ul>
+            </div>
+            <div class="deslogar-button">
+                <button onclick="confirmLogout()"><a href="#">Deslogar</a></button>
+            </div>
+            
+            <div class="mobile-menu-icon">
+                <button onclick="menuShow()">
+                    <img class="icon" src="{{ url_for('static', filename='img/menu_white_36dp (2).svg') }}" alt="Ícone do menu">
+                </button>
+            </div>
+        </nav>
+        <div class="mobile-menu">
+            <ul>
+                <li class="nav-item"><a href="/" class="nav-link">Início</a></li>
+                <li class="nav-item"><a href="/clientes" class="nav-link">Clientes</a></li>
+                <li class="nav-item"><a href="/pousadas" class="nav-link">Pousadas</a></li>
+                <li class="nav-item"><a href="/reservas" class="nav-link">Reservas</a></li>
+            </ul>
+            <div class="deslogar-button">
+                <button onclick="confirmLogout()"><a href="#">Deslogar</a></button>
+            </div>
         </div>
-    </main>
+    </header>
     
+    <main class="dashboard container">
+        <section class="card card1">
+            <h2>Total de Pousadas</h2>
+            <p>{{ total_pousadas }}</p>
+        </section>
+        <section class="card card2">
+            <h2>Total de Reservas</h2>
+            <p>{{ total_reservas }}</p>
+        </section>
+        <section class="card card3">
+            <h2>Total de Hóspedes</h2>
+            <p>{{ total_hospedes }}</p>
+        </section>
+        <section class="card card4">
+            <h2>Média de Hóspedes por Reserva</h2>
+            <p>{{ media_hospedes_por_reserva }}</p>
+        </section>
+        <section class="card card5">
+            <h2>Valor Total Arrecadado</h2>
+            <p>R$ {{ valor_total_arrecadado }}</p>
+        </section>
+        <section class="card card6">
+            <h2>Pousada Mais Popular</h2>
+            <p>{{ nome_pousada_mais_popular }}</p>
+        </section>
+    </main>
+
     <script>
         function confirmLogout() {
             if (confirm("Você realmente deseja sair?")) {
                 window.location.href = "/logout";
             }
         }
+
+        function menuShow(){
+            let menuMobile = document.querySelector('.mobile-menu');
+            if (menuMobile.classList.contains('open')){
+                menuMobile.classList.remove('open');
+                document.querySelector('.icon').src = "{{ url_for('static', filename='img/menu_white_36dp (2).svg') }}";
+            } else {
+                menuMobile.classList.add('open');
+                document.querySelector('.icon').src = "{{ url_for('static', filename='img/close_white.svg') }}";
+            }
+        }
     </script>
-
-    <button id="chatbotButton">Chat</button>
-
-    <div id="chatbotWindow" style="display: none; position: fixed; bottom: 100px; right: 20px;">
-        <div id="chatbotHeader">Chatbot</div>
-        <div id="chatbotContent">
-            <div class="message bot-message">Olá! Como posso ajudar você hoje?</div>
-        </div>
-        <div id="chatbotInputContainer">
-            <input type="text" id="chatbotInput" placeholder="Digite sua mensagem...">
-            <button id="sendButton">Enviar</button>
-        </div>
-    </div>
-
-    <script src="{{ url_for('static', filename='js/chatbot.js') }}"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-pOa0tNBRFnuCxOxdFYbYJ2KwSgDkWbg4NTqxrmdESBCjvXG6R/QpuYo/Dsw0r50V" crossorigin="anonymous"></script>
 </body>
 </html>
+
+
+

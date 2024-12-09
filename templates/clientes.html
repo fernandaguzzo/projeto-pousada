@@ -4,48 +4,164 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gerenciamento de Clientes</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='../static/formulario.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='../static/header.css') }}">
 </head>
 <body>
     
-    <a href="/index" class="return-menu-button">Menu Principal</a>
-
     <header>
-        <h1>Gerenciamento de Clientes</h1>
-        
-        <div id="resultado" class="result-box"></div>
+        <nav class="nav-bar">
+            <div class="logo">
+                <h1>Pousada Ypuã</h1>
+            </div>
+            <div class="nav-list">
+                <ul>
+                    <li class="nav-item"><a href="/" class="nav-link">Início</a></li>
+                    <li class="nav-item"><a href="/clientes" class="nav-link">Clientes</a></li>
+                    <li class="nav-item"><a href="/pousadas" class="nav-link">Pousadas</a></li>
+                    <li class="nav-item"><a href="/reservas" class="nav-link">Reservas</a></li>
+                </ul>
+            </div>
+            <div class="deslogar-button">
+                <button onclick="confirmLogout()"><a href="#">Deslogar</a></button>
+            </div>
+            
+            <div class="mobile-menu-icon">
+                <button onclick="menuShow()">
+                    <img class="icon" src="{{ url_for('static', filename='img/menu_white_36dp (2).svg') }}" alt="Ícone do menu">
+                </button>
+            </div>
+        </nav>
+        <div class="mobile-menu">
+            <ul>
+                <li class="nav-item"><a href="/" class="nav-link">Início</a></li>
+                <li class="nav-item"><a href="/clientes" class="nav-link">Clientes</a></li>
+                <li class="nav-item"><a href="/pousadas" class="nav-link">Pousadas</a></li>
+                <li class="nav-item"><a href="/reservas" class="nav-link">Reservas</a></li>
+            </ul>
+            <div class="deslogar-button">
+                <button onclick="confirmLogout()"><a href="#">Deslogar</a></button>
+            </div>
+        </div>
     </header>
 
     <main class="container">
-        
         <section class="form-section">
             <h2>Cadastrar Cliente</h2>
-            <input type="text" id="nome_cliente" placeholder="Nome do Cliente">
-            <input type="text" id="cpf_cnpj" placeholder="CPF ou CNPJ">
-            <input type="text" id="telefone" placeholder="Telefone">
-            <input type="email" id="email" placeholder="E-mail">
-            <button onclick="cadastrarCliente()">Cadastrar Cliente</button>
+            <form action="#" id="form_cadastrar_cliente">
+                <div class="input-box">
+                    <label for="nome_cliente">Nome do Cliente</label>
+                    <input type="text" id="nome_cliente" required>
+                </div>
+                <div class="input-box">
+                    <label for="cpf_cnpj">CPF ou CNPJ</label>
+                    <input type="text" id="cpf_cnpj" required>
+                </div>
+                <div class="input-box">
+                    <label for="telefone">Telefone</label>
+                    <input type="text" id="telefone"  required>
+                </div>
+                <div class="input-box">
+                    <label for="email">E-mail</label>
+                    <input type="email" id="email" required>
+                </div>
+                <button type="button" onclick="cadastrarCliente()">Cadastrar Cliente</button>
+            </form>
         </section>
 
-        
         <section class="list-section">
             <h2>Clientes Cadastrados</h2>
             <button id="botaoListarClientes" onclick="listarClientes()">Listar Todos os Clientes</button>
             <ul id="lista_clientes" style="display: none;"></ul>
         </section>
 
-       
         <div id="form_editar_cliente" class="hidden">
             <h3>Editar Cliente</h3>
-            <input type="text" id="editar_nome_cliente" placeholder="Nome do Cliente">
-            <input type="text" id="editar_cpf_cnpj_cliente" readonly> 
-            <input type="text" id="editar_telefone_cliente" placeholder="Telefone">
-            <input type="email" id="editar_email_cliente" placeholder="E-mail">
-            <button onclick="salvarEdicaoCliente()">Salvar Alterações</button>
+            <form action="#" id="form_editar_cliente_detalhes">
+                <div class="input-box">
+                    <label for="editar_nome_cliente">Nome do Cliente</label>
+                    <input type="text" id="editar_nome_cliente" placeholder="Digite o nome do cliente">
+                </div>
+                <div class="input-box">
+                    <label for="editar_cpf_cnpj_cliente">CPF ou CNPJ</label>
+                    <input type="text" id="editar_cpf_cnpj_cliente" readonly>
+                </div>
+                <div class="input-box">
+                    <label for="editar_telefone_cliente">Telefone</label>
+                    <input type="text" id="editar_telefone_cliente" placeholder="Digite o telefone">
+                </div>
+                <div class="input-box">
+                    <label for="editar_email_cliente">E-mail</label>
+                    <input type="email" id="editar_email_cliente" placeholder="Digite o e-mail">
+                </div>
+                <button type="button" onclick="salvarEdicaoCliente()">Salvar Alterações</button>
+            </form>
         </div>
     </main>
 
-    
     <script src="static/js/cliente.js"></script>
 </body>
+<script>
+    function cadastrarCliente() {
+    
+    var nome = document.getElementById('nome_cliente').value;
+    var cpfCnpj = document.getElementById('cpf_cnpj').value;
+    var telefone = document.getElementById('telefone').value;
+    var email = document.getElementById('email').value;
+
+    // Verificando se os campos estão preenchidos
+    if (nome && cpfCnpj && telefone && email) {
+        
+        var novoCliente = {
+            nome: nome,
+            cpfCnpj: cpfCnpj,
+            telefone: telefone,
+            email: email
+        };
+
+       
+        var listaClientes = JSON.parse(localStorage.getItem('clientes')) || [];
+
+        
+        listaClientes.push(novoCliente);
+
+      
+        localStorage.setItem('clientes', JSON.stringify(listaClientes));
+
+        
+        document.getElementById('nome_cliente').value = '';
+        document.getElementById('cpf_cnpj').value = '';
+        document.getElementById('telefone').value = '';
+        document.getElementById('email').value = '';
+
+       
+        listarClientes();
+    } else {
+        alert('Por favor, preencha todos os campos.');
+    }
+}
+
+function listarClientes() {
+   
+    var listaClientes = JSON.parse(localStorage.getItem('clientes')) || [];
+
+    
+    var listaClientesElement = document.getElementById('lista_clientes');
+    listaClientesElement.innerHTML = ''; 
+
+    
+    listaClientes.forEach(function(cliente) {
+        var li = document.createElement('li');
+        li.textContent = 'Nome: ' + cliente.nome + ', CPF/CNPJ: ' + cliente.cpfCnpj + ', Telefone: ' + cliente.telefone + ', E-mail: ' + cliente.email;
+        listaClientesElement.appendChild(li);
+    });
+
+    
+    listaClientesElement.style.display = 'block';
+}
+
+
+window.onload = listarClientes;
+</script>
 </html>
+

@@ -1,0 +1,305 @@
+/* Importando a fonte Poppins */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap');
+
+/* Resetando as margens e paddings e definindo a fonte padrão */
+* {
+    padding: 0;
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Cor de fundo de toda a página */
+body {
+    background-color: #5A1B1A; /* Cor de fundo */
+}
+
+
+header {
+    background-color: #7E2725;
+}
+
+.nav-bar {
+    display: flex;
+    justify-content: space-between;
+    padding: 1.5rem 6rem;
+    height: 40px;
+}
+
+.logo h1 {
+    color: #fff;
+}
+
+input {
+    padding: 5px !important;
+    outline: none;
+}
+
+input:focus
+{
+    border-color: #7E2725 !important;
+}
+
+.nav-list {
+    display: flex;
+    align-items: center;
+}
+
+.nav-list ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    margin-bottom: 10px;
+}
+
+.nav-item {
+    margin: 0 15px;
+}
+
+.nav-link {
+    text-decoration: none;
+    font-size: 1.15rem;
+    color: #fff;
+    font-weight: 400;
+}
+
+.deslogar-button button {
+    border: none;
+    background-color: #5A1B1A;
+    padding: 10px 15px;
+    border-radius: 20px;
+    margin-top: -2px;
+}
+
+.deslogar-button button a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: 500;
+}
+
+.mobile-menu-icon {
+    display: none;
+}
+
+.mobile-menu {
+    display: none;
+}
+
+@media screen and (max-width: 730px) {
+    .nav-bar {
+        padding: 1.5 4rem;
+    }
+
+    .nav-item {
+        display: none;
+    }
+
+    .deslogar-button {
+        display: none;
+    }
+
+    .mobile-menu-icon {
+        display: block;
+    }
+
+    .mobile-menu-icon button {
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+    }
+
+    .mobile-menu ul {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        padding-bottom: 1rem;
+    }
+
+    .mobile-menu .nav-item {
+        display: block;
+        padding: 1rem 2rem;
+    }
+
+    .mobile-menu .deslogar-button button {
+        width: 100%;
+    }
+
+    .open {
+        display: block;
+    }
+}
+
+main.container {
+    margin-top: 60px; /* Ajustado para reduzir o espaço abaixo do header */
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+/* Estilo da seção de formulário */
+.form-section {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+    width: 100%;
+    max-width: 600px;  
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.form-section h2 {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+input {
+    outline: none;
+
+}
+
+input:focus
+{
+    border-color: #7E2725 !important;
+}
+
+.input-box {
+    width: 100%;
+    margin-bottom: 20px; 
+}
+
+
+.label {
+    display: block;
+    margin-bottom: 5px;  
+    padding-top: 5px;
+}
+
+li {
+    margin-top: 10px !important;
+}
+input[type="text"], input[type="email"], input[type="tel"], input[type="number"], input[type="date"] {
+    width: 100%;
+    box-sizing: border-box;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+    margin-top: 5px;  /* Menor espaço acima do input */
+    padding: 5px;
+}
+
+input[type="date"]{
+    font-size: 12px;
+}
+
+.espacamento {
+    margin: 5px;
+}
+/* Estilos para o botão */
+button {
+    padding: 10px 20px;
+    background-color: #7E2725;
+    border: none;
+    color: white;
+    font-weight: 500;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 15px;
+}
+
+button a {
+    color: white;
+    text-decoration: none;
+}
+
+/* Estilos para a seção de listagem */
+.list-section {
+    background-color: #fff;
+    width: 100%;
+    max-width: 600px;
+    padding: 20px;
+    border-radius: 8px;
+}
+ 
+input {
+    padding: 5px !important;
+}
+#botaoListarPousadas {
+    padding: 10px 20px;
+    background-color: #5A1B1A !important;
+    color: white;
+    font-weight: 500;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    margin-bottom: 20px;
+    margin-top: 15px;
+}
+
+#lista_reservas {
+    list-style: none;
+    padding: 0;
+}
+
+/* Estilos para o formulário de edição */
+#form_editar_reserva {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 600px;
+    display: none;
+}
+
+#form_editar_reserva h3 {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+#form_editar_reserva .input-box {
+    margin-bottom: 15px;
+}
+
+input[readonly] {
+    background-color: #fff;
+}
+
+button[type="button"] {
+    background-color: #5A1B1A;
+    color: #fff;
+}
+
+/* Ajustes para o layout mobile */
+@media screen and (max-width: 730px) {
+    main.container {
+        padding: 15px;
+    }
+
+    .form-section, #form_editar_reserva {
+        width: 100%;
+        max-width: 100%;
+        padding: 15px;
+    }
+
+    .input-box {
+        width: 100%;
+    }
+
+    input[type="text"], input[type="email"], input[type="tel"], input[type="number"], input[type="date"] {
+        width: 100%;
+        padding: 20px;
+        font-size: 1rem;
+    }
+
+    button {
+        width: 100%;
+    }
+
+    #botaoListarPousadas {
+        width: 100%;
+    }
+}
+

@@ -1,0 +1,186 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #5A1B1A;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    background-color: #7E2725;
+}
+
+.nav-bar {
+    display: flex;
+    justify-content: space-between;
+    padding: 1.5rem 6rem;
+}
+
+.logo h1 {
+    color: #fff;
+}
+
+.nav-list {
+    display: flex;
+    align-items: center;
+}
+
+.nav-list ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+}
+
+.nav-item {
+    margin: 0 15px;
+}
+
+.nav-link {
+    text-decoration: none;
+    font-size: 1.15rem;
+    color: #fff;
+    font-weight: 400;
+}
+
+.deslogar-button button {
+    border: none;
+    background-color: #5A1B1A;
+    padding: 10px 15px;
+    border-radius: 20px;
+}
+
+.deslogar-button button a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: 500;
+}
+
+.mobile-menu-icon {
+    display: none;
+}
+
+.mobile-menu {
+    display: none;
+}
+
+@media screen and (max-width: 730px) {
+    .nav-bar {
+        padding: 1.5rem 4rem;
+    }
+
+    .nav-item {
+        display: none;
+    }
+
+    .deslogar-button {
+        display: none;
+    }
+
+    .mobile-menu-icon {
+        display: block;
+    }
+
+    .mobile-menu-icon button {
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+    }
+
+    .mobile-menu ul {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        padding-bottom: 1rem;
+    }
+
+    .mobile-menu .nav-item {
+        display: block;
+        padding: 1rem 2rem;
+    }
+
+    .mobile-menu .deslogar-button button {
+        width: 100%;
+    }
+
+    .open {
+        display: block;
+    }
+}
+
+.dashboard.container {
+    background-color: #5A1B1A;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Exibe 3 colunas por padrão */
+    gap: 10px; /* Ajustado para diminuir ainda mais o espaçamento entre os cards */
+    justify-items: center;
+    align-items: center;
+    flex-grow: 1; /* Ocupa o espaço disponível */
+    padding: 70px 20px;
+    box-sizing: border-box;
+}
+
+/* Media query para telas médias (tablets) */
+@media (max-width: 900px) {
+    .dashboard.container {
+        grid-template-columns: repeat(2, 1fr); /* 2 colunas para telas menores */
+        gap: 10px; /* Ajustado para diminuir o espaçamento entre os cards */
+    }
+}
+
+/* Media query para telas pequenas (celulares) */
+@media (max-width: 600px) {
+    .dashboard.container {
+        grid-template-columns: 1fr; /* 1 coluna para telas ainda menores */
+        gap: 10px; /* Ajustado para diminuir o espaçamento entre os cards */
+    }
+}
+
+.card {
+    color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 100%;
+    max-width: 350px;
+    text-align: center;
+    font-size: 1rem;
+    height: 190px;
+    text-align: center;
+}
+
+p {
+    margin-top: 20px;
+    font-size: 40px;
+}
+.card1 {
+    background-color: #9C3937;
+}
+
+.card2 {
+    background-color: #B8504D;
+}
+
+.card3 {
+    background-color:  #9C3937;
+}
+
+.card4 {
+    background-color: #B8504D;
+}
+
+.card5 {
+    background-color: #9C3937;
+}
+
+.card6 {
+    background-color: #B8504D;
+}
+

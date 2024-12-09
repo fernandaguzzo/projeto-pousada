@@ -4,24 +4,64 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gerenciamento de Pousadas</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='pousada.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='header.css') }}">
 </head>
 <body>
    
-    <a href="/index" class="return-menu-button">Menu Principal</a>
-
     <header>
-        <h1>Gerenciamento de Pousadas</h1>
-        <div id="resultado" class="result-box"></div>
+        <nav class="nav-bar">
+            <div class="logo">
+                <h1>Pousada Ypuã</h1>
+            </div>
+            <div class="nav-list">
+                <ul>
+                    <li class="nav-item"><a href="/" class="nav-link">Início</a></li>
+                    <li class="nav-item"><a href="/clientes" class="nav-link">Clientes</a></li>
+                    <li class="nav-item"><a href="/pousadas" class="nav-link">Pousadas</a></li>
+                    <li class="nav-item"><a href="/reservas" class="nav-link">Reservas</a></li>
+                </ul>
+            </div>
+            <div class="deslogar-button">
+                <button onclick="confirmLogout()"><a href="#">Deslogar</a></button>
+            </div>
+            
+            <div class="mobile-menu-icon">
+                <button onclick="menuShow()">
+                    <img class="icon" src="{{ url_for('static', filename='img/menu_white_36dp (2).svg') }}" alt="Ícone do menu">
+                </button>
+            </div>
+        </nav>
+        <div class="mobile-menu">
+            <ul>
+                <li class="nav-item"><a href="/" class="nav-link">Início</a></li>
+                <li class="nav-item"><a href="/clientes" class="nav-link">Clientes</a></li>
+                <li class="nav-item"><a href="/pousadas" class="nav-link">Pousadas</a></li>
+                <li class="nav-item"><a href="/reservas" class="nav-link">Reservas</a></li>
+            </ul>
+            <div class="deslogar-button">
+                <button onclick="confirmLogout()"><a href="#">Deslogar</a></button>
+            </div>
+        </div>
     </header>
 
     <main class="container">
        
         <section class="form-section">
             <h2>Cadastrar Pousada</h2>
-            <input type="text" id="id_pousada" placeholder="ID da Pousada">
-            <input type="text" id="nome_pousada" placeholder="Nome da Pousada">
-            <input type="text" id="valor_pousada" placeholder="Valor da Pousada">
+            <div class="espacamento">
+                <label>ID da Pousada</label>
+                <input type="text" id="id_pousada">
+            </div>
+            <div class="espacamento">
+                <label>Nome da Pousada</label>
+                <input type="text" id="nome_pousada">
+            </div>
+
+            <div class="espacamento">
+                <label>Valor da Pousada</label>
+                <input type="text" id="valor_pousada">
+            </div>
             <button onclick="cadastrarPousada()">Cadastrar Pousada</button>
         </section>
         
@@ -45,13 +85,9 @@
         </div>
 
         
-        <section id="reservas_pousada" class="hidden">
-            <h2>Reservas da Pousada</h2>
-            <ul id="lista_reservas_pousada"></ul>
-        </section>
     </main>
 
-    <script src="script.js"></script>
+   
 </body>
 </html>
 <script>

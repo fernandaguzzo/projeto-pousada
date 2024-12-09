@@ -1,104 +1,137 @@
-/* Estilos gerais */
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f4f8;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap');
+
+* {
     margin: 0;
     padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
 }
 
-h1 {
-    font-size: 18px;
-    text-align: center;
-    color: #555;
-    margin-bottom: 20px;
+:root {
+    --default-color: #7E2725;
+}
+
+::selection {
+    background-color: var(--default-color);
+    color: white;
+}
+
+body {
+    display: flex;
+    justify-content: center; /* Centraliza horizontalmente */
+    align-items: center; /* Centraliza verticalmente */
+    min-height: 100vh; /* Garante que a altura mínima da tela ocupe a tela inteira */
+    background-color: var(--default-color);
+    padding: 20px;
+    margin: 0; 
 }
 
 .container {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 350px;
-}
-
-h2 {
-    font-size: 22px;
-    color: #333;
-    margin-bottom: 10px;
-    border-bottom: 2px solid #4CAF50;
-    padding-bottom: 10px;
-}
-
-form {
+    max-width: 850px;
+    width: 100%; 
+    background: #fff;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
     display: flex;
-    flex-direction: column;
-    margin-bottom: 20px;
+    align-items: center; 
+    justify-content: space-between; 
+    padding: 30px 40px;
+    gap: 30px; 
 }
 
-label {
-    font-size: 14px;
-    color: #555;
-    margin-bottom: 5px;
+.container .login-form {
+    width: 50%;
 }
 
-input[type="text"], input[type="password"] {
-    padding: 10px;
-    font-size: 14px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+.container .login-form .title {
+    position: relative;
+    font-size: 24px;
+    font-weight: 500;
+    color: #333;
     margin-bottom: 15px;
-    transition: border-color 0.3s;
 }
 
-input[type="text"]:focus, input[type="password"]:focus {
-    border-color: #4CAF50;
+.container .login-form .title::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 3px;
+    width: 25px;
+    background-color: var(--default-color);
+}
+
+.container .login-form .input-box {
+    display: flex;
+    align-items: center;
+    height: 50px;
+    width: 100%;
+    margin: 15px 0;
+    position: relative;
+}
+
+.container .login-form .input-box input {
+    height: 100%;
+    width: 100%;
     outline: none;
-}
-
-button {
-    background-color: #4CAF50;
-    color: white;
-    padding: 10px;
-    font-size: 16px;
     border: none;
-    border-radius: 4px;
+    padding: 0 30px;
+    font-size: 16px;
+    font-weight: 500;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+.container .login-form .input-box input:focus,
+.container .login-form .input-box input:valid {
+    border-color: var(--default-color);
+}
+
+.container .login-form .input-box input[type="submit"] {
+    width: 100%;
+    padding: 8px 20px;
+    background-color: var(--default-color);
+    border: 0;
+    color: #fff;
+    border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s;
+    margin-top: 10px;
+    align-self: flex-start;
 }
 
-button:hover {
-    background-color: #45a049;
+.container .login-form .input-box i {
+    position: absolute;
+    color: var(--default-color);
+    font-size: 17px;
 }
 
-#message {
-    margin-top: 15px;
-    color: #ff4d4d;
-    font-size: 14px;
-    text-align: center;
+.container .login-img {
+    width: 50%; 
+    display: flex;
+    align-items: center; 
+    justify-content: center;
 }
 
-/* Responsividade */
-@media (max-width: 400px) {
+.container .login-img img {
+    max-width: 100%;
+    height: auto;
+}
+
+@media (max-width: 800px) {
     .container {
-        width: 90%;
+        flex-direction: column;
+        padding: 20px;
+        gap: 20px;
+    }
+
+    .login-img {
+        display: none !important; /
+    }
+
+    .login-form {
+        width: 100% !important; 
     }
 }
-#quickLogin {
-    background-color: #f39c12;
-    color: white;
-    padding: 10px;
-    font-size: 16px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    margin-top: 20px;
-    transition: background-color 0.3s;
-}
 
-#quickLogin:hover {
-    background-color: #e67e22;
-}
+
+
+

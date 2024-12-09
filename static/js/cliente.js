@@ -24,22 +24,21 @@ function cadastrarCliente() {
     .catch(error => console.error('Erro:', error));
 }
 
-// Função para listar clientes com alternância de exibição
+
 function listarClientes() {
     const lista = document.getElementById('lista_clientes');
     const botao = document.getElementById('botaoListarClientes');
 
-    // Alterna a visibilidade da lista e o texto do botão
+    
     if (lista.style.display === 'none' || lista.style.display === '') {
         lista.style.display = 'block';
         botao.textContent = 'Ocultar Clientes';
 
-        // Faz a requisição para buscar os clientes somente se a lista estiver visível
+        
         fetch('/listar_clientes')
             .then(response => response.json())
             .then(data => {
-                lista.innerHTML = ''; // Limpa a lista antes de adicionar os clientes
-
+                lista.innerHTML = ''; 
                 data.forEach(cliente => {
                     const li = document.createElement('li');
                     li.textContent = `${cliente.nome} - CPF/CNPJ: ${cliente.cpf_cnpj}`;
@@ -62,6 +61,14 @@ function listarClientes() {
         lista.style.display = 'none';
         botao.textContent = 'Listar Todos os Clientes';
     }
+}
+
+function cadastrarCliente() {
+   
+    document.getElementById('nome_cliente').value = '';
+    document.getElementById('cpf_cnpj').value = '';
+    document.getElementById('telefone').value = '';
+    document.getElementById('email').value = '';
 }
 
 

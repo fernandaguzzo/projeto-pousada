@@ -4,51 +4,103 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gerenciamento de Reservas</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='reservas.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='header.css') }}">
 </head>
 <body>
     
-    <a href="/index" class="return-menu-button">Menu Principal</a>
-
     <header>
-        <h1>Gerenciamento de Reservas</h1>
-        <div id="resultado" class="result-box"></div>
+        <nav class="nav-bar">
+            <div class="logo">
+                <h1>Pousada Ypuã</h1>
+            </div>
+            <div class="nav-list">
+                <ul>
+                    <li class="nav-item"><a href="/" class="nav-link">Início</a></li>
+                    <li class="nav-item"><a href="/clientes" class="nav-link">Clientes</a></li>
+                    <li class="nav-item"><a href="/pousadas" class="nav-link">Pousadas</a></li>
+                    <li class="nav-item"><a href="/reservas" class="nav-link">Reservas</a></li>
+                </ul>
+            </div>
+            <div class="deslogar-button">
+                <button onclick="confirmLogout()"><a href="#">Deslogar</a></button>
+            </div>
+            
+            <div class="mobile-menu-icon">
+                <button onclick="menuShow()">
+                    <img class="icon" src="{{ url_for('static', filename='img/menu_white_36dp (2).svg') }}" alt="Ícone do menu">
+                </button>
+            </div>
+        </nav>
+        <div class="mobile-menu">
+            <ul>
+                <li class="nav-item"><a href="/" class="nav-link">Início</a></li>
+                <li class="nav-item"><a href="/clientes" class="nav-link">Clientes</a></li>
+                <li class="nav-item"><a href="/pousadas" class="nav-link">Pousadas</a></li>
+                <li class="nav-item"><a href="/reservas" class="nav-link">Reservas</a></li>
+            </ul>
+            <div class="deslogar-button">
+                <button onclick="confirmLogout()"><a href="#">Deslogar</a></button>
+            </div>
+        </div>
     </header>
+
 
     <main class="container">
         
         <section class="form-section">
             <h2>Faça uma Reserva</h2>
             <form id="reservaForm" onsubmit="incluirReserva(event)">
-                <label for="nomeCompleto">Nome Completo</label>
+                <div class="espacamento">
+                    <label for="nomeCompleto">Nome Completo</label>
                 <input type="text" id="nomeCompleto" name="nomeCompleto" required>
+                </div>
                 
-                <label for="cpf">CPF</label>
+                <div class="espacamento">
+                    <label for="cpf">CPF</label>
                 <input type="text" id="cpf" name="cpf" required>
+                </div>
                 
-                <label for="pousadaId">Pousada ID</label>
+                <div class="espacamento">
+                    <label for="pousadaId">Pousada ID</label>
                 <input type="text" id="pousadaId" name="pousadaId" onchange="buscarPousada()" required>
+                </div>
                 
-                <label for="nomePousada">Nome da Pousada</label>
+                <div class="espacamento">
+                    <label for="nomePousada">Nome da Pousada</label>
                 <input type="text" id="nomePousada" name="nomePousada" readonly>
+                </div>
                 
-                <label for="valorDiaria">Valor da Diária</label>
+                <div class="espacamento">
+                    <label for="valorDiaria">Valor da Diária</label>
                 <input type="text" id="valorDiaria" name="valorDiaria" readonly required>
+                </div>
                 
-                <label for="quantidade">Número de Pessoas</label>
+                <div class="espacamento">
+                    <label for="quantidade">Número de Pessoas</label>
                 <input type="number" id="quantidade" name="quantidade" required>
+                </div>
                 
-                <label for="diaCheckin">Data de Check-in</label>
+                <div class="espacamento">
+                    <label for="diaCheckin">Data de Check-in</label>
                 <input type="date" id="diaCheckin" name="diaCheckin" onchange="calcularValor()" required>
+                </div>
                 
-                <label for="diaCheckout">Data de Check-out</label>
+                <div class="espacamento">
+                    <label for="diaCheckout">Data de Check-out</label>
                 <input type="date" id="diaCheckout" name="diaCheckout" onchange="calcularValor()" required>
+                </div>
                 
-                <label for="valor">Preço Total</label>
+                <div class="espacamento"> 
+                    <label for="valor">Preço Total</label>
                 <input type="text" id="valor" name="valor" readonly>
+                </div>
                 
-                <label for="metodoPagamento">Método de Pagamento</label>
+                <div class="espacamento">
+                    <label for="metodoPagamento">Método de Pagamento</label>
                 <input type="text" id="metodoPagamento" name="metodoPagamento" required>
+                </div>
+                
                 
                 <button type="submit">Incluir</button>
             </form>
